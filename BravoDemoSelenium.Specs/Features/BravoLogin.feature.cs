@@ -79,16 +79,16 @@ Link to a feature: [BravoLogin](BravoLoginSelenium.Specs/Features/BravoLogin.fea
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("In BravoLogin page login by right user name and password")]
-        [NUnit.Framework.TestCaseAttribute("thuanpham", "12345678", "Upheads AS", null)]
-        public void InBravoLoginPageLoginByRightUserNameAndPassword(string userName, string password, string expectedResult, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("In BravoLogin check validation message of user name and password")]
+        [NUnit.Framework.TestCaseAttribute("", "12345678", "The User name field is required.", null)]
+        public void InBravoLoginCheckValidationMessageOfUserNameAndPassword(string userName, string password, string expectedResult, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("User name", userName);
             argumentsOfScenario.Add("Password", password);
             argumentsOfScenario.Add("Expected result", expectedResult);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("In BravoLogin page login by right user name and password", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("In BravoLogin check validation message of user name and password", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 9
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -109,6 +109,43 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("the user name and password are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
+ testRunner.Then(string.Format("the user name validation message should be {0}", expectedResult), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("In BravoLogin page login by right user name and password")]
+        [NUnit.Framework.TestCaseAttribute("thuanpham", "12345678", "Upheads AS", null)]
+        public void InBravoLoginPageLoginByRightUserNameAndPassword(string userName, string password, string expectedResult, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("User name", userName);
+            argumentsOfScenario.Add("Password", password);
+            argumentsOfScenario.Add("Expected result", expectedResult);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("In BravoLogin page login by right user name and password", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 19
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 20
+ testRunner.Given(string.Format("the user name is {0}", userName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 21
+ testRunner.And(string.Format("the password is {0}", password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 22
+ testRunner.When("the user name and password are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 23
  testRunner.Then(string.Format("the display company name should be {0}", expectedResult), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

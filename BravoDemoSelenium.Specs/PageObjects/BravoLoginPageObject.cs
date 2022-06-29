@@ -30,9 +30,11 @@ namespace CalculatorSelenium.Specs.PageObjects
         private IWebElement LoginButtonElement => _webDriver.FindElement(By.Id("btnLogin"));
         private IWebElement DisplayCompanyElement => _webDriver.FindElement(By.XPath("//span[@title='Upheads AS']"));
 
+        private IWebElement UserNameErrorDisplayElement => _webDriver.FindElement(By.XPath("//span[normalize-space()='The User name field is required.']"));
         private IWebElement KeywordElement => _webDriver.FindElement(By.Id("Keyword"));
         private IWebElement SearchButtonElement => _webDriver.FindElement(By.Id("btnSearch"));
         private IWebElement CompaniesTableElement => _webDriver.FindElement(By.Id("propsectGrid"));
+
         public void EnterUserName(string text)
         {
             //Clear text box
@@ -76,6 +78,14 @@ namespace CalculatorSelenium.Specs.PageObjects
             //Wait for the result to be not empty
             return WaitUntil(
                 () => DisplayCompanyElement.GetAttribute("title"),
+                result => !string.IsNullOrEmpty(result));
+        }
+
+        public string WaitForValidattionResult()
+        {
+            //Wait for the result to be not empty
+            return WaitUntil(
+                () => UserNameElement.GetAttribute("data-val-required"),
                 result => !string.IsNullOrEmpty(result));
         }
 
