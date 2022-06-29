@@ -81,11 +81,19 @@ namespace CalculatorSelenium.Specs.PageObjects
                 result => !string.IsNullOrEmpty(result));
         }
 
-        public string WaitForValidattionResult()
+        public string WaitForUserNameValidattionResult()
         {
             //Wait for the result to be not empty
             return WaitUntil(
                 () => UserNameElement.GetAttribute("data-val-required"),
+                result => !string.IsNullOrEmpty(result));
+        }
+
+        public string WaitForPasswordValidattionResult()
+        {
+            //Wait for the result to be not empty
+            return WaitUntil(
+                () => PassWordElement.GetAttribute("data-val-required"),
                 result => !string.IsNullOrEmpty(result));
         }
 

@@ -45,13 +45,23 @@ namespace CalculatorSelenium.Specs.Steps
         }
 
         [Then("the user name validation message should be (.*)")]
-        public void ThenTheValidationMsgShouldBe(string expectedResult)
+        public void ThenTheUserNameValidationMsgShouldBe(string expectedResult)
         {
             //delegate to Page Object
-            var actualResult = _bravoLoginPageObject.WaitForValidattionResult();
+            var actualResult = _bravoLoginPageObject.WaitForUserNameValidattionResult();
             Thread.Sleep(5000);
             actualResult.Should().Be(expectedResult);
         }
+
+        [Then("the Password validation message should be (.*)")]
+        public void ThenTheValidationMsgShouldBe(string expectedResult)
+        {
+            //delegate to Page Object
+            var actualResult = _bravoLoginPageObject.WaitForPasswordValidattionResult();
+            Thread.Sleep(5000);
+            actualResult.Should().Be(expectedResult);
+        }
+
         [Then("the display company name should be (.*)")]
         public void ThenTheResultShouldBe(string expectedResult)
         {
