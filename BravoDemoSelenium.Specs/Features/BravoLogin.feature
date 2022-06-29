@@ -26,6 +26,16 @@ Examples:
 	| User name | Password | Expected result |
 	| thuanpham            |              | The Password field is required.              |
 
+	Scenario Outline: In BravoLogin check failed login message
+	Given the user name is <User name>
+	And the password is <Password>
+	When the user name and password are added
+	Then the failed login message should be <Expected result>
+
+Examples:
+	| User name | Password | Expected result |
+	| abcxyz            |928r9y9              |Login was unsuccessful. Please correct the errors and try again. |
+
 Scenario Outline: In BravoLogin page login by right user name and password
 	Given the user name is <User name>
 	And the password is <Password>

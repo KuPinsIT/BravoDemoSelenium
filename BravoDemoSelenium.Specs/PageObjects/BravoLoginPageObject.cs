@@ -29,8 +29,8 @@ namespace CalculatorSelenium.Specs.PageObjects
         private IWebElement PassWordElement => _webDriver.FindElement(By.Id("Password"));
         private IWebElement LoginButtonElement => _webDriver.FindElement(By.Id("btnLogin"));
         private IWebElement DisplayCompanyElement => _webDriver.FindElement(By.XPath("//span[@title='Upheads AS']"));
+        private IWebElement FailedLoginTextElement => _webDriver.FindElement(By.XPath("//*[@id='login-form']/div[1]/span/div/span"));
 
-        private IWebElement UserNameErrorDisplayElement => _webDriver.FindElement(By.XPath("//span[normalize-space()='The User name field is required.']"));
         private IWebElement KeywordElement => _webDriver.FindElement(By.Id("Keyword"));
         private IWebElement SearchButtonElement => _webDriver.FindElement(By.Id("btnSearch"));
         private IWebElement CompaniesTableElement => _webDriver.FindElement(By.Id("propsectGrid"));
@@ -96,6 +96,15 @@ namespace CalculatorSelenium.Specs.PageObjects
                 () => PassWordElement.GetAttribute("data-val-required"),
                 result => !string.IsNullOrEmpty(result));
         }
+
+        public string WaitForFailedLoginMessageResult()
+        {
+            //Wait for the result to be not empty
+            return WaitUntil(
+                () => FailedLoginTextElement.Text,
+                result => !string.IsNullOrEmpty(result));
+        }
+
 
         /// <summary>
         /// Helper method to wait until the expected result is available on the UI

@@ -62,6 +62,15 @@ namespace CalculatorSelenium.Specs.Steps
             actualResult.Should().Be(expectedResult);
         }
 
+        [Then("the failed login message should be (.*)")]
+        public void ThenTheFailedLoginMsgShouldBe(string expectedResult)
+        {
+            //delegate to Page Object
+            var actualResult = _bravoLoginPageObject.WaitForFailedLoginMessageResult();
+            Thread.Sleep(5000);
+            actualResult.Should().Be(expectedResult);
+        }
+
         [Then("the display company name should be (.*)")]
         public void ThenTheResultShouldBe(string expectedResult)
         {
